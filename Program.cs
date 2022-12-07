@@ -86,8 +86,28 @@ app.MapPut("/fornecedor/{id}",
     })
     .ProducesValidationProblem()
     .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
     .Produces(StatusCodes.Status400BadRequest)
     .WithName("PutFornecedor")
+    .WithTags("Fornecedor");
+
+app.MapDelete("/fornecedor/{id}",
+    async (Guid id, MinimalContextDb _context) =>
+    {
+        var fornecedor = await _context!.Fornecedores!.FindAsync(id);
+        if (fornecedor == null) return Results.NotFound();
+
+        _context!.Fornecedores!.Remove(fornecedor);
+        var result = await _context!.SaveChangesAsync();
+
+        return result > 0
+            ? Results.Ok("Fornecedor deletado com sucesso")
+            : Results.BadRequest("Houve um problema ao deletar o registro");
+    })
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .Produces(StatusCodes.Status400BadRequest)
+    .WithName("DeleteFornecedor")
     .WithTags("Fornecedor");
 
 app.Run();
