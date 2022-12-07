@@ -1,6 +1,8 @@
-using Microsoft.EntityFrameworkCore;
 using minimapApi.Data;
 using minimapApi.Model;
+
+using MiniValidation;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +47,26 @@ app.MapGet("/fornecedor/{id}",
     .WithName("GetFornecedorPorId")
     .WithTags("Fornecedor");
 
+app.MapPost("/fornecedor",
+    async (MinimalContextDb _context, Fornecedor fornecedor) =>
+    {
+        if (!MiniValidator.TryValidate(fornecedor, out var errors))
+            return Results.ValidationProblem(errors);
+
+        _context!.Fornecedores!.Add(fornecedor);
+        var result = await _context!.SaveChangesAsync();
+
+        return result > 0
+            // ? Results.Created($"/fornecedor/{fornecedor.Id}", fornecedor)
+            ? Results.CreatedAtRoute("GetFornecedorPorId", new { id = fornecedor.Id }, fornecedor)
+            : Results.BadRequest("Houve um problema ao salvar o registro");
+
+    })
+    .ProducesValidationProblem()
+    .Produces<Fornecedor>(StatusCodes.Status201Created)
+    .Produces(StatusCodes.Status400BadRequest)
+    .WithName("PostFornecedor")
+    .WithTags("Fornecedor");
 
 app.Run();
 
