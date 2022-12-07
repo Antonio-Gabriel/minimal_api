@@ -32,3 +32,4 @@
 /home/ag/Documentos/Projects/C#/minimapApi/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
 /home/ag/Documentos/Projects/C#/minimapApi/bin/Debug/net6.0/MySqlConnector.dll
 /home/ag/Documentos/Projects/C#/minimapApi/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/ag/Documentos/Projects/C#/minimapApi/bin/Debug/net6.0/MiniValidation.dll

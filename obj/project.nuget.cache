@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "44AW1+k7AueEZ8UQE77TJiJvo7CEW1GpH42D1WqJV/6CMNahcw1H/f2vG31FtTgJ62ZtgxLVFXCK3B3N4KUrQQ==",
+  "dgSpecHash": "3MBabsbm8xUHVU6H6trYR+2qnKCGY2/k9nFR1Oz+FGgqpTd/osJvCt6JoIdHFEkTPFWGIkxD4h+krcEAwMXDVg==",
   "success": true,
   "projectFilePath": "/home/ag/Documentos/Projects/C#/minimapApi/minimapApi.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "/home/ag/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
     "/home/ag/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "/home/ag/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/ag/.nuget/packages/minivalidation/0.7.0/minivalidation.0.7.0.nupkg.sha512",
     "/home/ag/.nuget/packages/mysqlconnector/2.1.2/mysqlconnector.2.1.2.nupkg.sha512",
     "/home/ag/.nuget/packages/pomelo.entityframeworkcore.mysql/6.0.1/pomelo.entityframeworkcore.mysql.6.0.1.nupkg.sha512",
     "/home/ag/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",

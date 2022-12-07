@@ -292,6 +292,19 @@
           }
         }
       },
+      "MiniValidation/0.7.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MiniValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MiniValidation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MySqlConnector/2.1.2": {
         "type": "package",
         "compile": {
@@ -824,6 +837,22 @@
         "microsoft.openapi.nuspec"
       ]
     },
+    "MiniValidation/0.7.0": {
+      "sha512": "zUEbVoLQVaywGqTmgAjzKsYGLMAGADkYXNw+VMOKpoLxip3dYEnpOHhHXycRvqOAbNc2HOr1jODt0lkUDPG5wQ==",
+      "type": "package",
+      "path": "minivalidation/0.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/MiniValidation.dll",
+        "lib/net6.0/MiniValidation.xml",
+        "lib/netstandard2.0/MiniValidation.dll",
+        "lib/netstandard2.0/MiniValidation.xml",
+        "minivalidation.0.7.0.nupkg.sha512",
+        "minivalidation.nuspec"
+      ]
+    },
     "MySqlConnector/2.1.2": {
       "sha512": "JVokQTUNN3WHAu9Vw8ieeq1dXTFokJiig5P0VJ4f439UxRrsPo6SaVWC8Zdm6mkPeQFhZ0/9afdWa02EY/1j/w==",
       "type": "package",
@@ -1026,6 +1055,7 @@
     "net6.0": [
       "Microsoft.EntityFrameworkCore.Design >= 6.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.1",
+      "MiniValidation >= 0.7.0",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.1",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
@@ -1078,6 +1108,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[6.0.1, )"
+          },
+          "MiniValidation": {
+            "target": "Package",
+            "version": "[0.7.0, )"
           },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",

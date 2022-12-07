@@ -10,6 +10,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "6.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.1",
+          "MiniValidation": "0.7.0",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.1",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
@@ -133,6 +134,14 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
             "assemblyVersion": "1.2.3.0",
             "fileVersion": "1.2.3.0"
+          }
+        }
+      },
+      "MiniValidation/0.7.0": {
+        "runtime": {
+          "lib/net6.0/MiniValidation.dll": {
+            "assemblyVersion": "0.7.0.0",
+            "fileVersion": "0.7.0.0"
           }
         }
       },
@@ -339,6 +348,13 @@
       "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
+    "MiniValidation/0.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zUEbVoLQVaywGqTmgAjzKsYGLMAGADkYXNw+VMOKpoLxip3dYEnpOHhHXycRvqOAbNc2HOr1jODt0lkUDPG5wQ==",
+      "path": "minivalidation/0.7.0",
+      "hashPath": "minivalidation.0.7.0.nupkg.sha512"
     },
     "MySqlConnector/2.1.2": {
       "type": "package",
