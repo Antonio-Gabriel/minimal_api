@@ -68,5 +68,27 @@ app.MapPost("/fornecedor",
     .WithName("PostFornecedor")
     .WithTags("Fornecedor");
 
+app.MapPut("/fornecedor/{id}",
+    async (Guid id, MinimalContextDb _context, Fornecedor fornecedor) =>
+    {
+        var fornecedorDb = await _context!.Fornecedores!.FindAsync(id);
+        if (fornecedorDb == null) return Results.NotFound();
+
+        if (!MiniValidator.TryValidate(fornecedor, out var errors))
+            return Results.ValidationProblem(errors);
+
+        _context!.Fornecedores!.Update(fornecedor);
+        var result = await _context!.SaveChangesAsync();
+
+        return result > 0
+            ? Results.Ok("Fornecedor atualizado com sucesso")
+            : Results.BadRequest("Houve um problema ao atualizar o registro");
+    })
+    .ProducesValidationProblem()
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status400BadRequest)
+    .WithName("PutFornecedor")
+    .WithTags("Fornecedor");
+
 app.Run();
 
