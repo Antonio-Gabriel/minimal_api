@@ -1,5 +1,6 @@
 using minimapApi.Data;
 using minimapApi.Model;
+using NetDevPack.Identity;
 
 using MiniValidation;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,10 @@ string mysqlConnection = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContextPool<MinimalContextDb>(
     options => options.UseMySql(mysqlConnection, ServerVersion.AutoDetect(mysqlConnection))
 );
+
+// builder.Services.AddIdentityEntityFrameworkContextConfiguration(options =>
+//             options.UseMySql(builder.Configuration.GetConnectionString("Default"),
+//                                 b => b.MigrationsAssembly("MinimalPilot")));
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -71,7 +76,9 @@ app.MapPost("/fornecedor",
 app.MapPut("/fornecedor/{id}",
     async (Guid id, MinimalContextDb _context, Fornecedor fornecedor) =>
     {
-        var fornecedorDb = await _context!.Fornecedores!.FindAsync(id);
+        var fornecedorDb = await _context!.Fornecedores!
+            .AsNoTracking<Fornecedor>()!.FirstOrDefaultAsync(f => f.Id == id);
+
         if (fornecedorDb == null) return Results.NotFound();
 
         if (!MiniValidator.TryValidate(fornecedor, out var errors))
