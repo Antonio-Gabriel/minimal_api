@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using minimapApi.Data;
+using minimapApi.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,11 +35,15 @@ app.MapGet("/fornecedores",
 .WithTags("Fornecedor");
 
 app.MapGet("/fornecedor/{id}",
-    async (MinimalContextDb _context, Guid id) =>
-        await _context!.Fornecedores!.Where(f => f.Id == id).FirstOrDefaultAsync()
-)
-.WithName("GetFornecedorPorId")
-.WithTags("Fornecedor");
+    async (Guid id, MinimalContextDb _context) =>
+        await _context!.Fornecedores!.FindAsync(id)
+            is Fornecedor fornecedor
+                ? Results.Ok(fornecedor)
+                : Results.NotFound())
+    .Produces<Fornecedor>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithName("GetFornecedorPorId")
+    .WithTags("Fornecedor");
 
 
 app.Run();
